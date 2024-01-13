@@ -1,3 +1,5 @@
 # Raspberry Pi NAS
 
-Get docker, run docker compose up -d
+- Get docker
+- `cp .env.example .env` and edit env settings
+- `docker compose up -d`
