@@ -97,6 +97,7 @@ services:
       - ${CONFIG_DIRECTORY}/swag:/config
     ports:
       - 443:443
+      - 80:80
     restart: unless-stopped
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
@@ -129,6 +130,8 @@ services:
     restart: unless-stopped
     depends_on:
       - "qbittorrent"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
   readarr:
     image: lscr.io/linuxserver/readarr:nightly
@@ -144,6 +147,8 @@ services:
     ports:
       - 8787:8787
     restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
@@ -161,3 +166,5 @@ services:
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
