@@ -14,6 +14,7 @@ services:
       - ${SHARE_DIRECTORY}/movies:/movies
       - ${SHARE_DIRECTORY}/downloads:/downloads
       - ${CONFIG_DIRECTORY}/radarr:/config
+      - /mnt/external-hard-drive/temporary-file-tunnel:/temporary-file-tunnel
     ports:
       - 7878:7878/tcp
     depends_on:
@@ -33,6 +34,7 @@ services:
       - ${CONFIG_DIRECTORY}/sonarr:/config
       - ${SHARE_DIRECTORY}/tv:/tv
       - ${SHARE_DIRECTORY}/downloads:/downloads
+      - /mnt/external-hard-drive/temporary-file-tunnel:/temporary-file-tunnel
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -71,9 +73,11 @@ services:
       - VERSION=docker
       - UMASK=022
     volumes:
-      - ${CONFIG_DIRECTORY}/plex:/config
+      - /home/tom/server-config/plex:/config
       - ${SHARE_DIRECTORY}/tv:/tv
       - ${SHARE_DIRECTORY}/movies:/movies
+      - ${SHARE_DIRECTORY}/music:/music
+      - ${SHARE_DIRECTORY}/pictures:/pictures
     restart: unless-stopped
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
